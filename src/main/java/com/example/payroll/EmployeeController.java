@@ -21,27 +21,27 @@ class EmployeeController {
 
     // Get All employees
     @GetMapping("/employees")
-    List<Employee> all() {
+    public List<Employee> all() {
         return repository.findAll();
     }
 
     // get one employee
     @GetMapping("/employees/{id}")
-    Employee one(@PathVariable Long id) {
+    public Employee one(@PathVariable Long id) {
         return repository.findById(id)
                 .orElseThrow(() -> new EmployeeNotFoundException(id));
     }
 
     // new employee
     @PostMapping("/employees")
-    Employee newEmployee(@RequestBody Employee newEmployee) {
+    public Employee newEmployee(@RequestBody Employee newEmployee) {
         log.info("Added new employee: {" + "name: {} role: {}}",newEmployee.getName(), newEmployee.getRole());
         return repository.save(newEmployee);
     }
 
     // update employee
     @PutMapping("/employees/{id}")
-    Employee replaceEmployee(@RequestBody Employee newEmployee, @PathVariable Long id) {
+    public Employee replaceEmployee(@RequestBody Employee newEmployee, @PathVariable Long id) {
 
         return repository.findById(id)
                 .map(employee -> {
