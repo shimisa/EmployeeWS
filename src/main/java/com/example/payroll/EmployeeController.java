@@ -10,7 +10,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Slf4j
 @RestController
-@CrossOrigin(origins = "http://localhost:3000")
+//@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin
 class EmployeeController {
 
     private final EmployeeRepository repository;
